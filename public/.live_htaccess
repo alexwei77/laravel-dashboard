@@ -1,0 +1,45 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes If Not A Folder...
+    #RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !(.*)/$
+    #RewriteCond %{REQUEST_URI} !^
+    #excluding certain pages 
+    #RewriteRule ^(blog) - [L]
+    #RewriteRule ^(typography) - [L]
+    #RewriteRule ^(advancedfeatures) - [L]
+    #RewriteRule ^(grid) - [L]
+    #RewriteRule ^(aboutus) - [L]
+    #RewriteRule ^(timeline) - [L]
+    #RewriteRule ^(price) - [L]
+    #RewriteRule ^(blank_page) - [L]
+    #RewriteRule ^(products) - [L]
+    #RewriteRule ^(single_product) - [L]
+    #RewriteRule ^(compareproducts) - [L]
+    #RewriteRule ^(category) - [L]
+    #RewriteRule ^(portfolio) - [L]
+    #RewriteRule ^(portfolioitem) - [L]
+    #RewriteRule ^(news) - [L]
+    #RewriteRule ^(news_item) - [L]
+    #RewriteRule ^(blogitem) - [L]
+    #RewriteRule ^(contact) - [L]
+
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ http://www.stafflife.com/$1 [R=301,L]
+</IfModule>

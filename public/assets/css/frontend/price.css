@@ -1,0 +1,350 @@
+/*Willem New CSS*/
+.orange-tooltip + .tooltip > .tooltip-inner {
+    background-color: #7d7d7d !important;
+    font-size: 16px;
+    padding: 10px 5px;
+}
+
+td p.pleft {
+    text-align:left !important;
+    margin-top:0;
+    font-size:13px;
+}
+
+.prcbutton {
+    padding: 12px 0 12px 0 !important;
+}
+    
+
+.tickimage {
+    float: left;
+    padding-left: 7px;
+    padding-right: 7px;
+    height:20px;
+}
+
+.pricegreen {
+    font-weight: 800 !important;
+    color: #4caf50;
+}
+
+@media screen and (max-width:1023px) {
+    .dskscrn {
+        display:none;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .mobscrn {
+        display:none;
+    }
+}
+
+
+.box_round_symboll {
+    background-color: #ffffff;
+    text-align: center;
+    color: #ee6f00;
+    padding-top: 0;
+font-size:40px;
+    max-width: 150px;
+    margin: 0 auto;
+    height: 60px;
+}
+
+@media screen and (max-width:767px) {
+    .ui-segment span.option {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .jumbotext {
+        padding-top: 1% !important;
+        padding-bottom: 4% !important;
+        background-size:cover;
+    }
+}
+
+.jumbotext {
+    padding-top: 0.6%;
+    padding-bottom: 0.8%;
+    background-color:#f4f4f4;
+    background-image: url("../../images/homesplash.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom: 0px;
+    border-bottom:1px solid #ececec;
+    background-size: cover;
+}
+
+/* ---------- Price Tabels ---------- */
+
+/* ---------- //Price Box Round Symboll Css End---------- */
+/* ---------- Price Box Panel heading Css ---------- */
+.panel-heading{
+	background-color:#ee6f00 !important;
+	border: none;
+	margin-top: 10px;
+}
+/* ---------- //Price Box panel heading Css End ---------- */
+/* ---------- Price Box panel body Css ---------- */
+.panel-body {
+	background-color: #f7f7f7;
+}
+/* ---------- //Price Box panel body css End ---------- */
+/* ---------- Price Box border Css ---------- */
+.panel{
+	border: none;
+}
+/* ---------- //Price Box border Css End ---------- */
+/* ---------- Price Box button Css ---------- */
+.price-btn{
+	background-color: #4caf50;
+	width: 100%;
+	color:#fff !important;
+	font-size: 17px;
+        max-width: 170px;
+}
+
+.price-btn:hover {
+	background-color: #3a993e !important;
+	width: 100%;
+	color:#fff !important;
+	font-size: 17px;
+        max-width: 170px;
+}
+
+/* ---------- //Price Box button Css End ---------- */
+/* _________ //Price Tables End _________ */
+
+#pricing_tables_title {
+margin-left: 13px;
+}
+
+p.faqtextsml {
+    font-size: 17px;
+    font-weight:300;
+}
+
+li.faqtextsml {
+    font-size: 17px;
+    font-weight:300;
+}
+
+h3.homeheading {
+    font-size: 30px;
+    line-height: 35px;
+    font-weight: 400;
+    color: #ee6f00;
+}
+
+.oddrow {
+    background-color:#f4f4f4;
+}
+
+@media screen and (max-width:767px) {
+    .onlybig {
+        display:none;
+    }
+}
+
+.panel-heading span {
+	margin-top: 1px;
+	font-size: 12px;
+}
+.mb10{margin-bottom:10px !important}
+.mt10{margin-top: 10px !important}
+.mix{position:relative;display:none;font-weight:400;color:#777;height:auto;overflow:visible}
+
+.panel{
+	width:100%;
+}
+.glyphicon{
+	font-weight: lighter;
+}
+
+/*test code*/
+
+@media screen and (max-width:767px) {
+    #choose-country2 {
+        padding: 10px 5px;
+    }
+    .jumbotron {
+        padding-top: 35% !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+.jumbotext .h1, .jumbotext h1 {
+    font-size: 45px;
+    }
+}
+
+.panel-title {
+    margin: 10px 0;
+    background-color: #f5f5f5;
+}
+
+.ing {
+    color:#666666;
+}
+
+.ing:hover {
+    color:#ee6f00;
+}
+
+.ing:focus {
+    color:#ee6f00;
+}
+
+p.faqtextbig {
+    font-size:21px;
+    font-weight:300;
+    line-height:24px;
+    padding-top: 10px;
+}
+
+@media screen and (max-width:768px) {
+    p.faqtextbig {
+        font-size:16px;
+        font-weight:300;
+        line-height:20px;
+        padding-top: 10px;
+    }
+}
+
+li.faqtextbig {
+    font-size:21px;
+    font-weight:300;
+    line-height:24px;
+    padding-top: 10px;
+}
+
+@media screen and (max-width:768px) {
+    li.faqtextbig {
+        font-size:16px;
+        font-weight:300;
+        line-height:20px;
+        padding-top: 10px;
+    }
+}
+
+.addpadf {
+    padding:30px 30px 0px 30px;
+}
+
+.navb>li>a, .navb>li>a:focus {
+    background-color: #bababa;
+    color: #ffffff;
+    font-size: 17px;
+    text-transform: uppercase;
+    border: 0;
+    padding: 10px;
+    min-width: 200px;
+    text-align: center;
+    border-radius: 0;
+}
+
+.navb>li>a:hover {
+    background-color: #db6701;
+    color: #ffffff;
+    font-size: 17px;
+    text-transform: uppercase;
+    border: 0;
+    padding: 10px;
+    min-width: 200px;
+    text-align: center;
+    border-radius: 0;
+}
+
+.nav-tabsb>li.active>a, .nav-tabsb>li.active>a:focus, .nav-tabsb>li.active>a:hover {
+    background-color: #4caf50;
+    color: #ffffff;
+    font-size: 17px;
+    text-transform: uppercase;
+    border: 0;
+    padding: 10px;
+    min-width: 200px;
+    text-align: center;
+    border-radius: 0;
+    text-decoration:none;
+    pointer-events: none;
+}
+
+.nav-tabsb {
+    border-bottom: 0;
+    margin-bottom:40px !important;
+}
+
+@media screen and (min-width:992px) {
+    .nav-tabsb {
+        padding-left: 33% !important;
+    }
+}
+
+@media screen and (max-width:991px) and (min-width:768px) {
+    .nav-tabsb {
+        padding-left: 20% !important;
+    }
+}
+
+@media screen and (min-width:720px) and (max-width:768px){
+    .nav-tabsb {
+        padding-left: 20% !important;
+        width:100% !important;
+    }
+}
+
+@media screen and (min-width:630px) and (max-width:720px){
+    .nav-tabsb {
+        padding-left: 18% !important;
+        width:100% !important;
+    }
+}
+
+@media screen and (min-width:555px) and (max-width:630px){
+    .nav-tabsb {
+        padding-left: 13% !important;
+        width:100% !important;
+    }
+}
+
+@media screen and (max-width: 555px) and (min-width: 521px) {
+    .nav-tabsb {
+        padding-left: 10% !important;
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width:520px) {
+    .nav-tabsb>li {
+        float: none !important;
+        padding-left:0;
+    }
+}
+
+.navb>li>a {
+    position: relative;
+    display: block;
+}
+
+.nav-tabsb>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+}
+
+.navb {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-tabsb>li {
+    float: left;
+    margin-bottom: -1px;
+}
+
+.panel-group {
+    margin-bottom: 0;
+}

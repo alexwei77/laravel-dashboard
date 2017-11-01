@@ -1,0 +1,16 @@
+{
+    "name": "laraveldaily/timezones",
+    "description": "This is my initial package creation for tutorial purposes",
+    "type": "project",
+    "require": {
+        "kdyby/doctrine": "^3.1"
+    },
+    "license": "none",
+    "authors": [
+        {
+            "name": "Thabo Madibane",
+            "email": "dev14@dmm.co.za"
+        }
+    ],
+    "minimum-stability": "dev"
+}

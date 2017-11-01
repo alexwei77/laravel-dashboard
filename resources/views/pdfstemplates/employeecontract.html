@@ -1,0 +1,352 @@
+<style>
+    .pdf_dock {
+        float: left;
+        width: 700px;
+        height: 610px;
+        background: white;
+        position: relative;
+        border: 1px solid #0c1f41;
+    }
+    
+    .fm_line span {
+        display: inline-block;
+    }
+    
+    .fm_line {
+        margin: 10px;
+    }
+    
+    .block {
+        display: inline-block;
+    }
+    
+    .voucher {
+        margin-top: 25px;
+    }
+    
+    .text {
+        background: white;
+        border-radius: 2px;
+        color: black;
+    }
+    
+    .text span {
+        padding: 7px;
+    }
+    
+    .field_name {
+        width: 40%;
+    }
+    
+    .text_block {
+        width: 520px;
+        position: absolute;
+        top: 54px
+    }
+    
+    .voucher_block {
+        width: 200px;
+        position: absolute;
+        right: 69px;
+        top: 65px;
+    }
+    
+    span.r1 {
+        font-size: 34px;
+    }
+    
+    .header {
+        background: white;
+        text-align: center;
+    }
+    
+    .header span {
+        padding: 5px;
+    }
+    
+    .fm_left {
+        width: 400px;
+        position: absolute;
+    }
+    
+    .fm_rigth {
+        width: 400px;
+        position: absolute;
+        left: 400px;
+        top: 0;
+    }
+    
+    .fm_block {
+        display: inline-block;
+    }
+    
+    .fm_middle td,
+    .fm_middle th,
+    .fm_middle caption {
+        border: 1px solid black;
+    }
+    
+    .fm_middle {
+        position: absolute;
+        top: 353px;
+        width: 100%;
+    }
+    
+    caption {
+        background: #001c4e;
+        color: white;
+    }
+    
+    tr:nth-child(odd) {
+        background: #001c4e;
+        color: white;
+    }
+    
+    tr:nth-child(even) {
+        background: #b4b2b2;
+        color: white;
+    }
+    
+    .comments {
+        position: absolute;
+        top: 180px;
+    }
+    
+    .fmtextarea {
+        margin: 20px;
+        border: 1px dashed;
+        margin-top: 20px;
+    }
+    
+    .fmtextarea div {
+        padding: 5px;
+    }
+    
+    .fminline {
+        display: inline-block;
+    }
+    
+    .banc_row .left {
+        width: 130px;
+    }
+    
+    .banc_row .rigth {}
+    
+    .boocking_thanks {
+        margin-top: 25px;
+        position: absolute;
+        top: 497px;
+        background: #002059;
+        color: white;
+    }
+    
+    .boocking_thanks .thanks {
+        width: 200px;
+    }
+    
+    .boocking_thanks .bottom_text {
+        width: 400px;
+    }
+    
+    .bottom {
+        height: 20px;
+        background: #002059;
+    }
+    
+    .top_block {
+        position: absolute;
+        top: 20px;
+        height: 331px;
+    }
+    
+    .banc_account,
+    .boocking_thanks {
+        width: 100%;
+    }
+    
+    .banc_account {
+        position: absolute;
+        top: 624px;
+    }
+    
+    .fm_confirm {
+        text-align: right;
+        width: 70%;
+    }
+    
+    .fm_confirm span {
+        width: 100%;
+        text-align: right;
+    }
+    
+    .voucher-details {
+        position: absolute;
+        top: 300px;
+    }
+    
+    .vat-no {
+        position: absolute;
+        top: 595px;
+        left: 25px;
+        width: 500px;
+    }
+    
+    .thanks_conf {
+        text-align: center;
+    }
+    
+    .thanks_conf span {
+        margin-top: 15px;
+    }
+    
+    .title_personal_details {
+        background: white;
+        position: absolute;
+        left: 30px;
+        top: 28px;
+        width: 120px;
+        text-align: center;
+    }
+    
+    .title_voucher_details {
+        background: white;
+        position: absolute;
+        left: 30px;
+        width: 120px;
+        top: -11px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .voucher-details .title {
+        background: white;
+        position: relative;
+        left: 35px;
+        top: -15px;
+    }
+    
+    .bidwest {
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+        color: #b4b2b0;
+    }
+    
+    .voucher_number {
+        position: relative;
+        left: 23px;
+        color: #c07d46;
+    }
+    
+    .onlbbidvest {
+        color: black;
+    }
+    
+    .bg-image {
+        position: relative;
+        left: 30px;
+    }
+    
+    .link {
+        color: black;
+        text-decoration: none;
+    }
+</style>
+<div class="pdf_dock">
+
+    <div class="header"><span>?creation_date?</span></div>
+    <div class="fm_block">
+
+        <div class="container">
+            <div class="top_block">
+                <div class="fm_left fm_block">
+                    <div class="logo"></div>
+                    <div class="info">
+
+                        <div class="text"><span>
+						    <div class="bg-image">
+                                <img src="?dirname?/uploads/online_booking_confirmation.png">
+                            </div>
+					   <br>
+					   <br>
+ 
+                        </div>
+                    </div>
+                    <div class="fm_rigth fm_block">
+                        <div class="fm_line">
+                            <div class="fm_confirm">
+                                
+                            <span class="info">
+                                <span class="bidwest onlbbidvest">Bidvest Premier Lounge a Division of<br> Bidair Services (PTY) Ltd.</span><br>
+
+                            <hr>
+                            <span>?airportname? Airport</span><br>
+                            <span>?LoungesName?</span><br>
+                            <span>Registration Number 1988/002125/07</span><br>
+
+                            <span>Tel: ?TravellersContactNumber?</span><br>
+
+                            <span><a class="link" href="http://www.bidvestlounge.co.za/">bidvestlounge.co.za/</a></span><br>
+
+                            <!--<p>O R Tambo International Airport</p>
+                        <p>4th Level, Mezzanine Floor</p>
+                        <p>Domestic Departure Hall</p>
+                        <p>Registration Number 1988/002125/07</p>
+                        <p>Tel: (011) 390 8660</p>
+                        <p>Fax: (011) 390 2232</p>
+                        <p>www.bidvestlounge.co.za</p>-->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <br><br>
+        <div class="comments">
+            <div class="voucher_number"> <span>Voucher Number: </span><span>?invoiceno?</span></div>
+            <div class="fmtextarea">
+                <span class="title_personal_details">Personal Details</span>
+                <div>
+                    <div class="row"><span>Name: </span><span>?travellersname?</span></div>
+                    <div class="row"><span>E-Mail Address: </span><span>?TravellersEmailAddress?</span></div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="voucher-details">
+
+            <div class="fmtextarea">
+                <span class="title_voucher_details">Voucher Details</span>
+                <div>
+                    <!--<div class="row"><span>Lounge: </span><span>?LoungesName?</span></div>-->
+                    <div class="row"><span>Flight Number: </span><span>?flightnumber?</span></div>
+                    <div class="row"><span>Rate (VAT Incl): </span><span>R?fm_amount?</span></div>
+
+
+                    <div class="row"><span>Company Name: </span><span>?companyname?</span></div>
+
+                    <div class="row"><span>Purchese Date: </span><span>?purchesedate?</span></div>
+
+                    <div class="row"><span>Voucher Valid Date: </span><span>?date?</span></div><!--it was vouchervalid -->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="boocking_thanks">
+            <div class="block">
+                <div class="thanks_conf"><br><span>THANK YOU!</span><br><span>For the opportunity to provide you with absolute luxury and relaxation.</span><br><span>011 390 8660 | www.bidvestlounge.co.za | T&C’s Apply</span></div>
+
+            </div>
+            <div class="bottom"></div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>

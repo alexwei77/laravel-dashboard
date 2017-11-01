@@ -1,0 +1,14 @@
+{
+    "name": "dmmx/subscriptions",
+    "description": "This package will hold dmmx resources that have anything to do with subscriptions.",
+    "type": "module",
+    "license": "none",
+    "authors": [
+        {
+            "name": "Digital Marketing Management",
+            "email": "dev14@dmm.co.za"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

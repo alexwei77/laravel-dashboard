@@ -1,0 +1,347 @@
+#choose-country2 {
+    margin-top: -2px !important;
+    background-color: #ffffff !important;
+    border: 0;
+    font-size: 14px;
+    color: #666666 !important;
+    text-decoration:underline;
+}
+
+#choose-country2:hover {
+    margin-top: -2px !important;
+    background-color: #ee6f00;
+    border: 0;
+    text-decoration:underline;
+}
+
+@media screen and (max-width:767px) {
+    #choose-country2 {
+        padding: 10px 5px;
+    }
+}
+
+.successb {
+    color: white;
+    padding: 12px 28px 12px 28px !important;
+    background-color:#4caf50;
+}
+
+
+p.faqtextsml {
+    font-size: 17px;
+    font-weight: 300;
+}
+
+@media screen and (min-width: 768px) {
+.jumbotext .h1, .jumbotext h1 {
+    font-size: 45px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .jumbotext {
+        padding-top: 1% !important;
+        padding-bottom: 4% !important;
+        background-size:cover;
+    }
+}
+
+.jumbotext {
+    padding-top: 0.6%;
+    padding-bottom: 0.8%;
+    background-color:#f4f4f4;
+        background-image: url("../../images/homesplash.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #ececec;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+/*---All current CSS---*/
+
+.logo_position {
+    position: relative;
+    bottom: 20px;
+    margin-top: 14px;
+}
+
+.box_round_symboll{
+       font-size: 20px !important; 
+      }
+
+      .bg-border2{
+          background: #4FC899;
+          border-left: 3px solid#ee6f00;
+          border-right: 3px solid#ee6f00;
+          border-top: 3px solid#ee6f00;
+          border-bottom: 3px solid#ee6f00;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          width: 100%;
+      }
+
+      .purchae-hed2 {
+         margin-bottom: 20px;
+         margin-left: 15px;
+         color: #fff;
+         text-transform: none;
+         font-size: 28px;
+         font-weight: bold;
+      }
+
+header{
+    width: 100%;
+    background: #ffffff; /* Standard syntax */
+    position: fixed;
+    z-index: 100;
+    padding-top:5px;
+    padding-bottom:5px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+      .icon-section{
+          display: none;
+      }
+
+      .navbar-nav > li > a{
+          color: #fff !important;
+      }
+
+.success {
+    background-color: #4CAF50;
+    min-width:200px;
+    color:#ffffff !important;
+}
+
+.successb {
+    background-color: #4CAF50;
+    min-width:200px;
+    color:#ffffff !important;
+}
+
+.successb:hover {
+    background-color: #46a049;
+    min-width:200px;
+    color:#ffffff;
+}
+
+.success:hover {
+    background-color: #46a049;
+    min-width:200px;
+    color:#ffffff;
+}
+
+.info {
+    background-color: #ee6f00;
+    min-width:200px;
+    color:#ffffff !important;
+}
+
+.info:hover {
+    background: #db6701;
+    min-width:200px;
+    color:#ffffff;
+}
+
+.jumbotron {
+    padding-top: 15%;
+    padding-bottom: 18%;
+    background-image: url("../../images/homesplash.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom: 0px;
+}
+
+.jumbotron p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
+}
+
+@media screen and (min-width: 768px) {
+    .jumbotron .h1, .jumbotron h1 {
+        font-size: 63px;
+        font-weight: 300;
+        color: #666666;
+    }
+}
+
+body {
+    /*background-color:#f4f4f4;*/
+    background-color:#ffffff;
+}
+
+.blockbg {
+    background-color:#ffffff;
+    padding: 60px;
+    margin: 1%;
+}
+
+.blockbgB {
+    background-color:#ffffff;
+    padding: 40px;
+} 
+
+.blockbgl {
+    background-color:#ffffff;
+    padding: 40px;
+    margin: 1% 0.5% 0 0;
+}
+
+.blockbgr {
+    background-color:#ffffff;
+    padding: 40px;
+    margin: 1% 0 0 0.5%;
+}      
+
+.homehr {
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    border: 0; 
+    border-top: 1px solid #c6c6c6; 
+    width: 30%;
+}
+
+.abouthrb {
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    border: 0; 
+    border-top: 1px solid #c6c6c6; 
+    width: 150px;
+    align:left;
+    margin-left:0;
+}
+
+.abouthr {
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    border: 0; 
+    border-top: 1px solid #c6c6c6; 
+    width: 150px;
+}
+
+.orangeblock {
+    background-color:#ee6f00;
+    padding-top:10px;
+    padding-bottom:20px;
+    font-size: 21px;
+    color:#ffffff;
+}
+
+@media (min-width: 768px) {
+    .col-sm-6 {
+        width: 48%;
+    }
+}
+
+.marbottom {
+    margin-bottom: 40px;
+}
+
+.martop {
+    margin-top: 40px;
+}
+
+.navbar-nav > li > a {
+    font-size: 14px;
+    text-transform: none;
+    font-weight: 400;
+    color: #666666 !important;
+    margin-top: 8px;
+}
+
+@media (min-width:1400px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+.addpad {
+    padding-top:50px;
+    padding-bottom:50px;
+}
+
+@media screen and (max-width:767px) {
+    .addpad {
+        padding-top:0;
+        padding-bottom:0;
+    }
+}
+
+.addpadb {
+    padding:50px 30px 0 30px;
+}
+
+.addpadc {
+    padding:0 30px 0 30px;
+}
+
+.addpadd {
+    padding:20px 30px 20px 30px;
+}
+
+.addpade {
+    padding:20px 30px 0 30px;
+}
+
+
+p.hometextbig {
+    font-size:17px;
+    font-weight:500;
+    line-height:24px;
+}
+
+h3.homeheading {
+    font-size:28px;
+    line-height:35px;
+    font-weight:400;
+    color:#4caf50;
+}
+
+h3.homeheadingb {
+    font-size:28px;
+    line-height:35px;
+    font-weight:400;
+    color:#4caf50;
+    margin-top:10px;
+}
+
+section {
+    padding-top:10px;
+    padding-bottom:10px;
+    overflow:auto;
+}
+
+h3.whitehthree {
+    font-size:30px;
+    color:#ffffff;
+}
+
+.maximage {
+    width:100%;
+    max-width:585px;
+}
+
+.oddrow {
+    background-color:#f4f4f4;
+}
+
+.rowleft {
+    text-align:right;
+}
+
+.iconspacel {
+    margin-left:30px;
+}
+
+.iconspacer {
+    margin-right:30px;
+}

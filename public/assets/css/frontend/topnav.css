@@ -1,0 +1,49 @@
+.navbar .navbar-default .container .affix {
+    position: static;
+    margin-top:0px;
+    width:228px;
+  }
+
+  .navbar .navbar-default .container .affix {
+    position: fixed;
+    top:0px;
+    width:228px;
+  }
+
+  .affix {
+    position: fixed;
+    margin-top: 0px !important;
+    background-color: #fff !important;
+    width: 100%;
+    top:0px;
+    z-index: 1000000;
+}
+
+
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 0px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.navbar-right {
+    margin-right: 0px;
+}
+
+.list-inline {
+    padding-left: 0;
+    margin-left: 0px;
+    list-style: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #757B87;
+    border-color: #757B87;
+}
+
+#choose-country2{
+  margin-left: 5px;
+}

@@ -1,0 +1,16 @@
+.babelrc
+.bowerrc
+.deploy_inc
+.deployignore
+.env
+.idea
+.git
+.gitignore
+.gitattributes
+.gitlab-ci.yml
+.htaccess
+app.yaml
+deploy
+deploy_lock.tmp
+*.xml
+/config

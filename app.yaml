@@ -1,0 +1,58 @@
+runtime: php
+env: flex
+
+runtime_config:
+  document_root: public
+
+# required on some platforms so ".env" is not skipped
+skip_files:
+   - .env
+
+env_variables:
+  # The values here will override those in ".env". This is useful for
+  # production-specific configuration. However, feel free to set these values
+  # in ".env" instead if you prefer.
+  APP_ENV: production
+  APP_DEBUG: true
+  APP_LOG_LEVEL: debug
+  APP_LOG: errorlog
+
+  CACHE_DRIVER: file
+  SESSION_DRIVER: cookie
+  QUEUE_DRIVER: database
+
+
+  ALGOLIA_APP_ID: EQVMTWLKFQ
+  ALGOLIA_SECRET: ae66ceea8f0f6a0323434e6ef33af114
+
+  MAIL_DRIVER: smtp
+  MAIL_HOST: smtp.mailgun.org
+  MAIL_PORT: 2525
+  MAIL_USERNAME: postmaster@stafflife.com
+  MAIL_PASSWORD: stafflife@mg1240
+
+  STRIPE_KEY: pk_test_FY9SDqgyUnVNxwXFKfd0uenR
+  STRIPE_SECRET: sk_test_2vUdWcST87aHIL9bfpYjH22T
+
+  APP_KEY: base64:SLqHBzosJuClcDLOrPk5vZF5vNkaZKaWdhjqZ22hBZs=
+  STORAGE_DIR: /tmp
+
+  REDIS_HOST: redis-15719.c15.us-east-1-4.ec2.cloud.redislabs.com
+  # REDIS_PASSWORD: null
+  REDIS_PORT: 15719
+
+  ## Set these environment variables according to your CloudSQL configuration.
+  DB_HOST: localhost
+  DB_DATABASE: dmmx
+  DB_USERNAME: stafflife_user
+  DB_PASSWORD: 03w4NKNCyh7um3qP7rd2RrGiI
+  DB_SOCKET: "/cloudsql/staff-life:europe-west1:stafflife-sql-instance"
+
+  MYSQL_DSN: mysql:unix_socket=/cloudsql/staff-life:europe-west1:stafflife-sql-instance;dbname=dmmx
+  MYSQL_USER: stafflife_user
+  MYSQL_PASSWORD: 03w4NKNCyh7um3qP7rd2RrGiI
+
+beta_settings:
+    # for Cloud SQL, set this value to the Cloud SQL connection name,
+    # e.g. "project:region:cloudsql-instance"
+    cloud_sql_instances: "staff-life:europe-west1:stafflife-sql-instance"

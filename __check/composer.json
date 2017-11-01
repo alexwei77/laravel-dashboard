@@ -1,0 +1,95 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "repositories": [
+        {
+          "type": "artifact",
+          "url": "infyomlabs"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "algolia/algoliasearch-client-php": "^1.17",
+        "algolia/algoliasearch-laravel": "^1.7",
+        "barryvdh/laravel-translation-manager": "^0.2.8",
+        "bogardo/mailgun": "^5.0",
+        "cartalyst/sentinel": "^2.0",
+        "cviebrock/eloquent-sluggable": "^4.2",
+        "cviebrock/eloquent-taggable": "2.1.0-beta",
+        "deboorn/expbackoffworker": "^1.0",
+        "doctrine/dbal": "^2.5",
+        "guzzlehttp/guzzle": "^6.2",
+        "in-the-beam/laravel-locale-selector": "~1.0.0-dev",
+        "infyomlabs/core-templates": "5.3.x-dev",
+        "infyomlabs/generator-builder": "dev-master",
+        "infyomlabs/laravel-generator": "^1.0",
+        "infyomlabs/swagger-generator": "dev-master",
+        "intervention/image": "^2.3",
+        "ip2location/ip2location-laravel": "1.*",
+        "jaybizzle/crawler-detect": "1.*",
+        "jlapp/swaggervel": "dev-master",
+        "jrean/laravel-user-verification": "^4.1",
+        "laravel/cashier": "~7.0",
+        "laravel/framework": "5.4.*",
+        "laravel/scout": "^3.0",
+        "laravel/tinker": "^1.0",
+        "laravelba/laravel-js-routes": "^1.0",
+        "laravelcollective/html": "5.4.*",
+        "mcamara/laravel-localization": "^1.2",
+        "musonza/chat": "^1.0",
+        "php-http/guzzle6-adapter": "^1.1",
+        "phpoffice/phpexcel": "^1.8",
+        "roumen/sitemap": "2.6.*",
+        "superbalist/laravel-google-cloud-storage": "^1.0",
+        "vsch/laravel-translation-manager": "~2.2",
+        "vsmoraes/laravel-pdf": "^1.0",
+        "yajra/laravel-datatables-oracle": "^7.3"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.0",
+        "barryvdh/laravel-debugbar": "^2.4",
+        "barryvdh/laravel-ide-helper": "^2.4"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Tests\\": "tests/",
+            "Laraveldaily\\Timezones\\": "packages/laraveldaily/timezones/src",
+            "Dmmx\\Subscriptions\\": "packages/dmmx/subscriptions/src"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
+            "php artisan optimize"
+        ],
+        "post-deploy-cmd": [
+            "chmod -R 755 bootstrap\/cache",
+            "php artisan cache:clear"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}

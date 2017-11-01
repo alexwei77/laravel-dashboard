@@ -1,0 +1,136 @@
+.box_round_symboll{
+       font-size: 20px !important; 
+      }
+
+      .bg-border2{
+          background: #4FC899;
+          border-left: 3px solid#E97451;
+          border-right: 3px solid#E97451;
+          border-top: 3px solid#E97451;
+          border-bottom: 3px solid#E97451;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          width: 100%;
+      }
+
+      .purchae-hed2 {
+         margin-bottom: 20px;
+         margin-left: 15px;
+         color: #fff;
+         text-transform: none;
+         font-size: 28px;
+         font-weight: bold;
+      }
+
+      header{
+       width: 100%;
+       background: linear-gradient(#000, transparent); /* Standard syntax */
+       position: fixed;
+       z-index: 100;
+       color: #fff;
+      }
+      .icon-section{
+          display: none;
+      }
+
+      .navbar-nav > li > a{
+          color: #fff !important;
+      }
+    
+
+   .btn {
+    border: none; /* Remove borders */
+    color: #E15126; /* Add a text color */
+    padding: 14px 28px 12px 28px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+    border-radius: 0;
+    font-size:17px;
+}
+
+.success {
+    background-color: #4CAF50;
+    min-width:200px;
+}
+
+.successb {
+    background-color: #4CAF50;
+    min-width:30%;
+}
+
+.successb:hover {
+    background-color: #46a049;
+    min-width:30%;
+    color:#ffffff;
+}
+
+.success:hover {
+    background-color: #46a049;
+    min-width:200px;
+    color:#ffffff;
+}
+
+.info {
+    background-color: #e97451;
+    min-width:200px
+}
+
+.info:hover {
+    background: #e15126;
+    min-width:200px;
+    color:#ffffff;
+}
+
+.jumbotron {
+    padding-top: 10%;
+    padding-bottom: 25%;
+    background-image: url("../../images/cover1.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom: 0px;
+}
+
+.jumbotron p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
+}
+
+body {
+    background-color:#f4f4f4;
+}
+
+.blockbg {
+    background-color:#ffffff;
+    padding: 60px;
+    margin: 1%;
+}    
+
+.homehr {
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    border: 0; 
+    border-top: 1px solid #c6c6c6; 
+    width: 30%;
+}
+
+.orangeblock {
+    background-color:#e97451;
+    padding-top:10px;
+    padding-bottom:20px;
+    font-size: 21px;
+    color:#ffffff;
+}
+
+@media (min-width: 768px) {
+    .col-sm-6 {
+        width: 48%;
+    }
+}
+
+.marbottom {
+    margin-bottom: 40px;
+}
+
+.martop {
+    margin-top: 40px;
+}

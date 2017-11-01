@@ -1,0 +1,275 @@
+#!/bin/bash
+
+##################################################################
+# DEPLOY SCRIPT
+# - Author: Alex Lawani (dev11@dmm.co.za)
+# - Version: 1.0.0
+##################################################################
+
+
+# CONFIG PROJECT
+LIVEFOLDER=${LIVEFOLDER:-/usr/www/users/staffzpnrs}
+
+CDIR=$(pwd)
+SDIR=$(cd `dirname $0` && pwd)
+UNIT_TEST_ERRORS=0
+TIMESAMP=`date`
+HOST=`hostname`
+
+cd $SDIR
+
+# add app lock
+if [ -e ${SDIR}/deploy_lock.tmp ] ; then
+  echo "Deploy started at $TIMESAMP is still running. To over-ride use: rm -f ${SDIR}/deploy_lock.tmp"
+  echo "PID $$: was blocked on: $TIMESAMP" >> ${SDIR}/deploy_lock.tmp
+  exit 1
+else
+  echo "Locked by PID $$, on: $TIMESAMP" > ${SDIR}/deploy_lock.tmp
+fi
+
+# Include the functions
+. $SDIR/.deploy_inc
+
+##################################################################
+# HELP
+##################################################################
+if [ "$1" = "help" ] || [ ${#1} == 0 ] ; then
+
+  cat $SDIR/.deploy_art
+
+  echo_cyan "- usage: ./deploy"
+  echo
+  echo_cyan "  Do a full deploy with [full]* or "
+  echo_cyan "    Pull from Git Repo                     - [pull]"
+  echo_cyan "    Run any available migrations           - [mig]"
+  echo_cyan "    Run tests Units                        - [test]*"
+  echo_cyan "    Sync code to live folder               - [sync] or [sync-dry-run]"
+  echo_cyan "    Display this info                      - [help]"
+  echo
+  echo_yellow "*Option currently unavailable. ¯\_(ツ)_/¯"
+  end_script 1
+fi
+
+##################################################################
+# INIT
+##################################################################
+
+echo
+echo_gray "##################################################################"
+echo
+
+echo_cyan "Run at: ${TIMESAMP}"
+echo
+cat /dev/null > deploy_error.log
+
+##################################################################
+# GIT PULL
+##################################################################
+echo_pad "Pull from Git Repo"
+if IN_PARAMS 'pull' ; then
+  GITBRANCH=`git branch | grep "*"`
+  git remote show origin > git_status.log
+  git reset --hard HEAD  > /dev/null 2>/dev/null
+  git clean -f > /dev/null 2>/dev/null
+  git pull 1>git_pull.log 2>git_pull_error.log
+  RC=$?
+  if [ $RC -ne 0 ] ; then
+    echo_red "FAIL cat git_pull_error.log"
+    echo "GIT PULL ERROR:" >>deploy_error.log
+    cat log/git_pull_error.log >>deploy_error.log
+  else
+    echo_green "${OK}"
+  fi
+  if [ -s git_pull.log ]; then
+    git_status=$(<git_pull.log)
+    if [ "$git_status" = "Already up-to-date." ]; then
+      echo_pad "Already up-to-date."
+      echo_cyan "Done"
+      end_script 0
+    fi
+  fi
+else
+  echo_cyan "${SKIP}(Include [pull] as a parameter)"
+fi
+
+# GET THE LATEST GIT HASH
+# VER=$(git rev-parse --short HEAD)
+
+##################################################################
+# CLEAN UP
+##################################################################
+# echo_pad "Cleaning up Dev folders"
+#if IN_PARAMS 'clean' ; then
+
+    # Remove all log files older than 1 day
+#    if [ "$(ls -A log)" ]; then
+#        find log/*.log -mtime +1 -exec rm -f {} \;
+#        find log/*.html -mtime +1 -exec rm -f {} \;
+#    fi
+
+#    cat /dev/null > log/deploy_error.log
+
+#    echo_green "${OK}"
+#else
+#  echo_cyan "${SKIP}(Include [clean] as a parameter)"
+#fi
+
+
+##################################################################
+# RUN ANY EXISTING DATABASE MIGRATIONS
+##################################################################
+echo_pad "Migration"
+if IN_PARAMS 'mig' ; then
+##########################################
+  echo
+  echo_pad "-- Running php artisan migrate"
+  cp -R database/migrations/* $LIVEFOLDER/database/migrations/
+  cd $LIVEFOLDER
+  php artisan migrate 1>$SDIR/laravel_migrate_log 2>$SDIR/laravel_migrate_error_log
+  cd $SDIR
+  RC=$?
+  if [ $RC -ne 0 ] ; then
+    echo_red "FAIL cat laravel_migrate_error.log"
+    echo "Laravel migration error occurred:" >>deploy_error.log
+    cat laravel_migrate_error.log >>deploy_error.log
+  else
+    echo_green "${OK}"
+  fi
+else
+  echo_cyan "${SKIP}(Include [mig] as a parameter)"
+fi
+
+##################################################################
+# RUN FUNCTIONAL TESTS
+##################################################################
+
+#echo_pad "Test Functional and Unit"
+#if IN_PARAMS 'test' ; then
+
+#  echo_cyan "- Test results can be found in log folder"
+
+  ##########################################
+#  echo_pad "-- Running tests: msconfig"
+#  echo "Running test: Msconfig" > log/test_msconfig.log
+#  ./symfony test:functional frontend quiet msconfig >> log/test_msconfig.log 2>&1
+#  unit_test msconfig
+
+  ##########################################
+#  echo_pad "-- Running tests: propel"
+#  echo "Running test: Propel" > log/test_propel.log
+#  ./symfony test:unit frontend quiet propel >> log/test_propel.log 2>&1
+#  unit_test propel
+
+  ##########################################
+#  echo_pad "-- Running tests: normaliser inbound"
+#  echo "Running test: normaliserIn" > log/test_normaliserIn.log
+#  ./symfony test:functional frontend quiet normaliserIn >> log/test_normaliserIn.log 2>&1
+#  unit_test normaliserIn
+
+  ##########################################
+#  # we cant run unit tests with symfony test:unit task as they don't return the correct exit code
+
+#  echo_pad "-- Testing messageListingES:"
+#  echo "Testing: MessageListingES" > log/test_unit.log
+#  php test/unit/messageListingESTest.php >> log/test_unit.log 2>&1
+#  RC=$?
+#  if [ $RC -ne 0 ] ; then
+#       ((UNIT_TEST_ERRORS+=1))
+#    echo_red "${ERROR}cat log/test_unit.log or run: php test/unit/messageListingESTest.php"
+#    echo "Failed Unit Test (use the following to correct it.): php test/unit/messageListingESTest.php" >> log/test_unit.log
+#  else
+#    echo_green "${OK}"
+#  fi
+
+#  echo_pad "-- Testing blacklist:"
+#  echo "Testing: blacklist" > log/test_unit.log
+#  php test/unit/blacklistInTest.php >> log/test_unit.log 2>&1
+#  RC=$?
+#  if [ $RC -ne 0 ] ; then
+#    ((UNIT_TEST_ERRORS+=1))
+#    echo_red "${ERROR}cat log/test_unit.log or run: php test/unit/blacklistInTest.php"
+#    echo "Failed Unit Test (use the following to correct it.): php test/unit/blacklistInTest.php" >> log/test_unit.log
+#  else
+#    echo_green "${OK}"
+#  fi
+
+#else
+#  echo_cyan "${SKIP}(Include [test] as a parameter)"
+#fi
+
+##################################################################
+# SEND ERROR REPORT AND FAIL
+##################################################################
+
+#echo_pad "Send error report email"
+#if [ -s log/deploy_error.log ] || [ "$UNIT_TEST_ERRORS" -gt 0 ] ; then
+  # echo_red "${UNIT_TEST_ERRORS} unit test error(s) found"
+#  if IN_PARAMS_RAW 'email' ; then
+#    git log --stat -2 | cat - log/deploy_error.log > log/sent_email.txt
+#    cat log/sent_email.txt | php send_smtp_mail -h=192.168.0.1 -p=25 -un=dev@synaq.com -subj="Pinpoint-Securemail Deploy - Test Report - $HOSTNAME - $TIMESAMP" 2>/dev/null 2>&1 >> log/send_report.log
+#    RC=$?
+#    if [ $RC -ne 0 ] ; then
+#      echo_red "${ERROR}cat log/send_report.log"
+#    else
+#        echo_green "${OK}"
+#    fi
+#  else
+#    echo_cyan "${SKIP}(Include [email] as a parameter)"
+#  fi
+#  if ! IN_PARAMS_RAW 'sync-dry-run' ; then
+#    echo
+#    echo_red "Aborting due to errors found!"
+#    echo_cyan "To view error log run: cat log/deploy_error.log"
+#    echo_cyan "Use (sync-dry-run) or (no-test-db) if you want to continue."
+#    end_script 1;
+#  fi
+#else
+#  echo_cyan "${SKIP}(No Errors to report on)"
+  #cat log/sent_email.txt | php send_smtp_mail -h=192.168.0.1 -p=25 -un=dev@synaq.com -subj="Pinpoint-Securemail Deploy - No Errors - $HOSTNAME - $TIMESAMP" 2>/dev/null 2>&1 >> log/send_report.log
+#fi
+
+
+##################################################################
+# SYNC TO LIVE FOLDER
+##################################################################
+
+echo_pad "Sync code to live folder"
+
+if ( IN_PARAMS_RAW 'sync' ) || ( IN_PARAMS_RAW 'sync-dry-run' ) ; then
+
+# TODO: re-enable the block below once we have tests in place
+  #if ! IN_PARAMS 'test' ; then
+  #  echo_red "${ERROR}Must run [test/full] before [sync]"
+  #  end_script 1
+  #fi
+
+  if IN_PARAMS_RAW 'sync-dry-run' ; then
+    echo_cyan "${SKIP}Running a 'sync-dry-run' operation."
+    echo
+    echo "RSYNC (DRY RUN)"
+    echo "---------------"
+    echo
+    rsync -avPn $SDIR/ $LIVEFOLDER/ --exclude-from=$SDIR/.deployignore > rsync_dry_run.log
+    echo "See result with:"
+    echo_cyan "cat rsync_dry_run.log"
+    echo
+    echo "Run the following line to make it so:"
+    echo_cyan "rsync -avP $SDIR/ $LIVEFOLDER/ --exclude-from=$SDIR/.deployignore"
+    end_script 1
+  fi
+
+  rsync -avP --quiet $SDIR/ $LIVEFOLDER/ --exclude-from=$SDIR/.deployignore &> rsync_dry_run.log
+  RC=$?
+  if [ $RC -ne 0 ] ; then
+    echo_red "SYNC FAILED!"
+    echo_cyan ">> rsync -avP $SDIR/ $LIVEFOLDER/ --exclude-from=$SDIR/.deployignore"
+    end_script $RC
+  fi
+
+  echo_green "${OK}"
+
+else
+   echo_cyan "${SKIP}(Include [sync] as a parameter)"
+fi
+
+end_script 0

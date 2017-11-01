@@ -1,0 +1,186 @@
+#!/bin/bash
+
+##################################################################
+# UTIL FUNCTIONS
+##################################################################
+
+OK="✔ "
+SKIP="- "
+ERROR="✘ "
+
+START=$(date +%s)
+
+PARAMS=( "$@" )
+IN_PARAMS () {
+  RESULT=1
+  for i in "${PARAMS[@]}"; do
+    if [ "$i" = "no-$1" ]; then
+    #echo "$i = no-$1"
+      return 1
+    elif [ "$i" = "$1" ] || [ "$i" = "full" ]; then
+      #echo "$i = $1 or full"
+      RESULT=0
+    fi
+  done
+  #echo "$1 in params = $RESULT"
+  return $RESULT
+}
+
+IN_PARAMS_RAW () {
+  RESULT=1
+  for i in "${PARAMS[@]}"; do
+    if [ "$i" = "$1" ]; then
+      RESULT=0
+    fi
+  done
+  return $RESULT
+}
+
+# check if stdout is a terminal...
+if [ -t 1 ]; then
+
+    # see if it supports colors...
+    ncolors=$(tput colors)
+
+    if test -n "$ncolors" && test $ncolors -ge 8; then
+        bold="$(tput bold)"
+        underline="$(tput smul)"
+        standout="$(tput smso)"
+        normal="$(tput sgr0)"
+        black="$(tput setaf 0)"
+        red="$(tput setaf 1)"
+        green="$(tput setaf 2)"
+        yellow="$(tput setaf 3)"
+        blue="$(tput setaf 4)"
+        magenta="$(tput setaf 5)"
+        cyan="$(tput setaf 6)"
+        white="$(tput setaf 7)"
+    fi
+fi
+
+function echo_title() {
+  if [[ ${ncolors} -ge 8 ]]; then
+    echo -e "${bold}${cyan}${1}${normal}"
+  else
+    echo -e "${1}"
+  fi
+}
+
+function echo_cyan() {
+  if [[ ${ncolors} -ge 8 ]]; then
+    echo -e "${cyan}${1}${normal}"
+  else
+    echo -e "${1}"
+  fi
+}
+
+function echo_red() {
+  if [[ $ncolors -ge 8 ]]; then
+    echo -e "${red}${1}${normal}"
+  else
+    echo -e "${1}"
+  fi
+}
+
+function echo_green() {
+  if [[ $ncolors -ge 8 ]]; then
+    echo -e "${green}${1}${normal}"
+  else
+    echo -e "${1}"
+  fi
+}
+
+function echo_gray() {
+  if [[ $ncolors -ge 8 ]]; then
+    echo -e "${magenta}${1}${normal}"
+  else
+    echo -e "${1}"
+  fi
+}
+
+function echo_yellow() {
+  if [[ $ncolors -ge 8 ]]; then
+    echo -e "${yellow}${1}${normal}"
+  else
+    echo -e "${1}"
+  fi
+}
+
+
+function echo_pad() {
+    printf '%-40s' "${1}"
+}
+
+
+function run() {
+  if [ -z "$2" ] ; then
+    echo "Errors logged to: deploy_error.log" >> $2
+    $1 1>/dev/null 2>>deploy_error.log
+  else
+    echo "Run: ${1}" > $2
+    echo "Errors logged to: deploy_error.log" >> $2
+    $1 1>>$2 2>>deploy_error.log
+  fi
+  RC=$?
+  if [ $RC -ne 0 ] ; then
+
+    echo "${ERROR}$RC: While running:  ${1}" >>deploy_error.log
+
+    if [ -z "$2" ] ; then
+      echo_red "${ERROR}See: cat deploy_error.log"
+    else
+      echo_red "${ERROR}See: cat "$2
+      cat $2 >>deploy_error.log
+    fi
+
+  else
+    echo_green "${OK}"
+  fi
+
+  return $RC
+}
+
+function test() {
+  RC=$?
+  if [ $RC -ne 0 ] ; then
+    echo_red "${ERROR}$RC"
+    echo "Fail while running:  ${1}" >>deploy_error.log
+  else
+    echo_green "${OK}"
+  fi
+}
+
+function unit_test() {
+  RC=$?
+  if [ $RC -ne 0 ] ; then
+    echo_red "${ERROR}./symfony test:functional frontend not_quiet ${1}"
+    echo "${ERROR}${1} Test:" >> deploy_error.log
+    echo "============================================================================" >> deploy_error.log
+    cat test_${1}.log >> deploy_error.log
+    echo >> deploy_error.log
+  else
+    echo_green "${OK}"
+  fi
+}
+
+function end_script() {
+
+  # Remove files older than a week from the log folder.
+  # find log -mtime +8 -exec rm {} \;
+
+  # remove app lock
+  if [ -e ${SDIR}/deploy_lock.tmp ] ; then
+    #echo "[removing lock file ${SDIR}/deploy_lock.tmp ]"
+    rm -f ${SDIR}/deploy_lock.tmp
+  fi
+
+  END=$(date +%s)
+  DIFF=$(( $END - $START ))
+  echo
+  echo_gray "Done... (took $DIFF seconds to run.)"
+  echo
+  # cd $CDIR
+
+  exit $1
+
+}
